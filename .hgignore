@@ -1,0 +1,9 @@
+syntax: glob
+
+abstract-xs-multitabla-rvg.pdf
+*.bcf
+*.xml
+*.out
+*.log
+*.aux
+*.backup

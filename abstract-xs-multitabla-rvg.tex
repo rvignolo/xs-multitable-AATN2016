@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+
+
+% TODO: use polyflossia
+\usepackage[english, spanish]{babel}
+
+% font specification
+\usepackage{fontspec}
+% \setmainfont{TeX Gyre Pagella}
+% \setmainfont[Mapping=tex-text]{TeX Gyre Pagella}
+% \setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+
+\setmainfont[Mapping=tex-text]{LinLibertineO}
+\newfontfamily\ipa{LinLibertineO}
+
+% \setsansfont[Scale=MatchLowercase]{Latin Modern Sans}
+% \setsansfont[Scale=MatchLowercase]{Linux Biolinum O}
+\setsansfont[Scale=MatchLowercase]{Carlito}
+
+% consolas no es free pero tiene bold, inconsolata es al vesre
+% \setmonofont[Scale=MatchLowercase]{Inconsolata}
+% \setmonofont[Scale=MatchLowercase]{Consolas}
+\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+
+% page sizes and margins
+\usepackage{geometry}
+\geometry{paper=a4paper, left=2.75cm, right=2.75cm, bottom=2.5cm, foot=2cm, top=3.5cm}
+\setlength{\headheight}{14pt}
+
+% hyperlinks in pdfs
+\usepackage{hyperref}
+\hypersetup{pdftitle=, pdfauthor=,pdfborder={0 0 0}, colorlinks=false, linkcolor=black, citecolor=black, filecolor=black}
+\hypersetup{pdftitle={Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON para CNA2}, pdfauthor={Ramiro Vignolo}}
+
+% headers & footers
+\usepackage{fancyhdr}
+\makeatletter
+\fancyhead[L]{\@docnumber-\@docrevision}
+\fancyhead[C]{}
+\fancyhead[R]{\thepage/\pageref{lastpage}}
+\fancyfoot[L]{\includegraphics[height=10pt]{theme/logo-nasa}}
+\fancyfoot[C]{\tiny{\texttt{23436d43f9bb}}}
+% \fancyfoot[R]{\thepage}
+\fancyfoot[R]{\includegraphics[height=10pt]{theme/logo-tecna}}
+\makeatother
+\renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+\pagestyle{fancy}
+
+% biblatex
+\usepackage{csquotes}     % this package is needed for \blx@bibinit below (sic)
+\usepackage[backend=biber,sorting=none]{biblatex}    
+\addbibresource{bibliografia/bibliografia.bib}
+\addbibresource{bibliografia/congresos.bib}
+\addbibresource{bibliografia/informes.bib}
+\addbibresource{bibliografia/internacionales.bib}
+\addbibresource{bibliografia/monografias.bib}
+\addbibresource{bibliografia/nacionales.bib}
+% initialize macros so \bibstring can be used to show some fields (needs csquotes)
+\makeatletter
+\blx@bibinit
+\makeatother
+
+% Font style for figures' and tables' captions
+\usepackage[small,bf,up]{caption}
+\renewcommand{\captionfont}{\scriptsize\sf}
+
+% things
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{eso-pic}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{xltxtra}
+\usepackage{siunitx}
+
+
+\usepackage{booktabs}
+\usepackage{lscape}
+\usepackage{breqn}
+
+% vectors done right
+\renewcommand{\vec}[1]{\ensuremath\mathbf{#1}}
+
+% textpos para poner bloques de texto en posiciones absolutas
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{2.5mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0mm}{\paperheight}
+
+
+\makeatletter 
+% these fields are defined as TeX macros so they can be used as such,
+% i.e.  in the fancyhdr package
+\def\affiliation#1{\def\@affiliation{#1}}
+
+\newcommand{\fielddesc}[1]{\textsf{\footnotesize{#1}}}
+
+\def\maketitle{%
+\thispagestyle{empty}
+
+\newlength{\coff}
+\setlength{\coff}{0.3cm}
+
+% --- title -------------------------------------------------------
+\null
+\vspace{0.5cm plus 0.5cm minus 0.5cm}
+
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{center}
+\Large{\textbf{\textsc{\@title}}}
+
+\vspace{0.75cm plus 0.2cm minus 0.1cm}
+
+\large{\@author}
+
+\vspace{1.25cm plus 0.25cm minus 0.25cm}
+
+\small{\@affiliation}
+\vspace{1cm plus 0.2cm minus 0.2cm}
+
+\end{center}
+\end{minipage}
+\end{center}
+
+}
+
+\makeatother
+
+\begin{document}
+
+
+\title{Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON para CNA2}
+\author{Vignolo, R.$^{1}$ \quad Giuntoli, G.$^{1}$}
+\affiliation{%
+$^1$TECNA Estudios y Proyectos de Ingeniería S.A.\\
+Encarnaci\'on Ezcurra 365, C1107CLA~Buenos Aires, Argentina\\
+\url{rvignolo@tecna.com}\\
+}
+
+
+\maketitle
+
+
+\begin{abstract}
+\noindent
+Con el fin de determinar las discrepancias encontradas entre el coeficiente de reactividad por temperatura del combustible (Doppler) medido en la Central Nuclear Atucha~II y el calculado a partir de secciones eficaces obtenidas mediante el código de celda WIMS de forma usual, surgió la necesidad de modelar la celda elemental de CNA2 a través de DRAGON, dado que éste código no sólo permite tener en cuenta ciertos fenómenos previamente considerados despreciables, sino que también posee una serie de funciones o procedimientos, lenguaje de \emph{macros} y programas externos que facilitan la obtención de tablas de múltiples parámetros. El concepto de tablas de múltiples parámetros surge debido a que para representar adecuadamente éstos nuevos fenómenos considerados, debe pasarse de una tabla usual de un único parámetro de entrada (el Quemado) a una de múltiples parámetros (por las nuevas dependencias no lineales). En este trabajo se presenta la teoría detrás de los parámetros globales y locales de secciones eficaces que ha permitido identificar cuales de ellos deben ser seleccionados con el fin de representar adecuadamente la central nuclear tanto en cálculos de núcleo estacionarios como en transitorios de cinética espacial. En este contexto, se describe la implementación de estos conceptos dentro de un \emph{deck} de cálculo que utiliza a DRAGON como motor de cálculo neutrónico y, posteriormente, se analizan los resultados obtenidos.
+
+% en el prox trabajo, lo que voy a hablar es la implementacion de estos dentro del dypra (pce principalmente) y los resultados obtenidos en cuanto a los coefs.
+\end{abstract}
+
+\vfill
+
+\begin{center}
+\begin{small}
+XLIII Reunión Anual de la Asociación Argentina de Tecnología Nuclear\\
+Buenos Aires, Noviembre 2016
+\end{small}
+\end{center}
+
+\addtolength{\textheight}{-2cm}
+
+
+\end{document}
+
