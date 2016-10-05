@@ -30,7 +30,7 @@
 % hyperlinks in pdfs
 \usepackage{hyperref}
 \hypersetup{pdftitle=, pdfauthor=,pdfborder={0 0 0}, colorlinks=false, linkcolor=black, citecolor=black, filecolor=black}
-\hypersetup{pdftitle={Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON para CNA2}, pdfauthor={Ramiro Vignolo}}
+\hypersetup{pdftitle={Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON V5 para CNA2}, pdfauthor={Ramiro Vignolo}}
 
 % headers & footers
 \usepackage{fancyhdr}
@@ -136,7 +136,7 @@
 \begin{document}
 
 
-\title{Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON para CNA2}
+\title{Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON V5 para CNA2}
 \author{Vignolo, R.$^{1}$ \quad Giuntoli, G.$^{1}$}
 \affiliation{%
 $^1$TECNA Estudios y Proyectos de Ingeniería S.A.\\
@@ -150,7 +150,7 @@ Encarnaci\'on Ezcurra 365, C1107CLA~Buenos Aires, Argentina\\
 
 \begin{abstract}
 \noindent
-Con el fin de determinar las discrepancias encontradas entre el coeficiente de reactividad por temperatura del combustible (Doppler) medido en la Central Nuclear Atucha~II y el calculado a partir de secciones eficaces obtenidas mediante el código de celda WIMS de forma usual, surgió la necesidad de modelar la celda elemental de CNA2 a través de DRAGON, dado que éste código no sólo permite tener en cuenta ciertos fenómenos previamente considerados despreciables, sino que también posee una serie de funciones o procedimientos, lenguaje de \emph{macros} y programas externos que facilitan la obtención de tablas de múltiples parámetros. El concepto de tablas de múltiples parámetros surge debido a que para representar adecuadamente éstos nuevos fenómenos considerados, debe pasarse de una tabla usual de un único parámetro de entrada (el Quemado) a una de múltiples parámetros (por las nuevas dependencias no lineales). En este trabajo se presenta la teoría detrás de los parámetros globales y locales de secciones eficaces que ha permitido identificar cuales de ellos deben ser seleccionados con el fin de representar adecuadamente la central nuclear tanto en cálculos de núcleo estacionarios como en transitorios de cinética espacial. En este contexto, se describe la implementación de estos conceptos dentro de un \emph{deck} de cálculo que utiliza a DRAGON como motor de cálculo neutrónico y, posteriormente, se analizan los resultados obtenidos.
+Con el fin de determinar las discrepancias encontradas entre el coeficiente de reactividad por temperatura del combustible (\emph{doppler}) medido en la Central Nuclear Atucha~II y el calculado a partir de secciones eficaces obtenidas mediante el código de celda WIMS de forma usual, surgió la necesidad de modelar la celda elemental de CNA2 a través del código DRAGON, dado que éste no sólo permite tener en cuenta ciertos fenómenos previamente considerados despreciables, sino que también posee una serie de funciones o procedimientos, lenguaje de \emph{macros} y programas externos que facilitan la obtención de tablas de múltiples parámetros. El concepto de tablas de múltiples parámetros surge debido a que para representar adecuadamente éstos nuevos fenómenos considerados, debe pasarse de una tabla usual de un único parámetro de entrada (el Quemado) a una de múltiples parámetros (por las nuevas dependencias no lineales). En este trabajo se presenta la teoría detrás de los parámetros globales y locales de secciones eficaces que ha permitido identificar cuales de ellos deben ser seleccionados para representar adecuadamente la central nuclear tanto en cálculos de núcleo estacionarios como en transitorios de cinética espacial. En este contexto, se describe la implementación de estos conceptos dentro de un \emph{deck} de cálculo que utiliza a DRAGON como motor de cálculo neutrónico y, posteriormente, se analizan los resultados obtenidos.
 
 % en el prox trabajo, lo que voy a hablar es la implementacion de estos dentro del dypra (pce principalmente) y los resultados obtenidos en cuanto a los coefs.
 \end{abstract}
