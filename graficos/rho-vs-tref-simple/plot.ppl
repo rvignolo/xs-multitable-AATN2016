@@ -1,0 +1,22 @@
+#Tamanyo A4 apaisado.
+set width 22*unit(cm)
+set papersize a4
+set preamble "\usepackage{amsmath}"
+set axis x arrow nomirrored
+set axis y arrow nomirrored
+set grid
+set fontsize 1
+
+set key top right
+load "styles.ppl"
+
+set xrange [* : *]
+set yrange [* : *]
+set ylabel '$\rho_\infty$ [pcm]'
+
+set xlabel '$T_{refr}$ [K]'
+set terminal pdf
+set output 'xs-vs-trefr-simple.pdf'
+
+plot "./rho-vs-trefr.dat" u 1:2 every 1 w lp style 2 ti '$T_i$ acoplada a $T_{refr}$',\
+     "./rho-vs-trefr-sa.dat" u 1:2 every 1 w lp style 3 ti '$T_i$ no acoplada a $T_{refr}$'

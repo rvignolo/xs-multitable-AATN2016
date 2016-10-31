@@ -1,0 +1,21 @@
+#Tamanyo A4 apaisado.
+set width 22*unit(cm)
+set papersize a4
+set preamble "\usepackage{amsmath}"
+set axis x arrow nomirrored
+set axis y arrow nomirrored
+set grid
+
+set key top right
+load "styles.ppl"
+
+set xrange [* : *]
+set yrange [* : *]
+set ylabel '$\frac{\partial\Sigma_x}{\partial T}$ [$\frac{1 / \text{cm}}{\text{K}}$]'
+
+set xlabel '$Q$ [$\text{MWd}/\text{tU}$]'
+set terminal pdf
+set output 'dxs.pdf'
+
+plot "./directional_dXS5_d-trefr-vs-q-multidimensional.dat" u 1:2 every 1 w lp style 2 ti 'direccional',\
+     "./local_dXS5_d-trefr-vs-q-multidimensional.dat"       u 1:2 every 1 w lp style 3 ti 'local'

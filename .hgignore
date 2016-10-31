@@ -2,6 +2,8 @@ syntax: glob
 
 abstract-xs-multitabla-rvg.pdf
 *.bcf
+*.bbl
+*.blg
 *.xml
 *.out
 *.log
