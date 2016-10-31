@@ -1,6 +1,6 @@
 syntax: glob
 
-abstract-xs-multitabla-rvg.pdf
+full-paper.pdf
 *.bcf
 *.bbl
 *.blg
