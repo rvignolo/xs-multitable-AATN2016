@@ -557,11 +557,12 @@ Cuando la dependencia de la sección eficaz con ciertos parámetros locales no e
 
 \section{Extracción de datos}
 
-Los datos generados a partir de quemados de referencia, \emph{linear loops} o \emph{nested loops} son almacenados en estructuras de datos denominadas, usualmente, objetos \texttt{multicompo}. Estos objetos poseen un formato de datos que respeta cierta estructura que puede ser leída y procesada por las bibliotecas GanLib (ver Ref.~\cite{handbook-ganlib}).
+Los datos generados a partir de quemados de referencia, \emph{linear loops} o \emph{nested loops} son almacenados en estructuras de datos denominadas, usualmente, objetos \texttt{multicompo}. Estos objetos poseen un formato de datos que respeta cierta estructura que puede ser leída y procesada por las bibliotecas GanLib.
 
-El Programa Cinético Espacial (PCE) requiere de los siguientes datos para poder determinar tanto un estado estacionario de planta como la evolución de determinado transitorio:
+El Programa Cinético Espacial (PCE, Ref.~\cite{pumitacpl}) requiere de los siguientes datos para poder determinar tanto un estado estacionario de planta como la evolución de determinado transitorio:
 
 \begin{itemize}
+\renewcommand\labelitemi{$\cdot$}
  \item secciones eficaces condensadas y homogeneizadas, que incluyen coeficientes de difusión, absorciones, \emph{scattering} y fisiones rápidas y térmicas. En total son doce los valores a detallar: $D_{1}$, $D_{2}$, $\Sigma_{a1}$, $\Sigma_{12}$, $\Sigma_{21}$, $\Sigma_{a2}$, $\nu\Sigma_{f1}$, $\nu\Sigma_{f2}$, $e\Sigma_{f1}$, $e\Sigma_{f2}$, $\Sigma_{f1}$ y $\Sigma_{f2}$;
  \item constantes del xenón y iodo para la determinación de la dinámica de los mismos. Estas incluyen seis valores: \emph{yields} de fisión para el xenón y iodo (térmicos y rápidos) y las secciones eficaces microscópicas de absorción del xenón;
  \item derivadas de las secciones eficaces con respecto a los parámetros termohidráulicos y el xenón, que se determinan a partir del análisis de objetos \texttt{multicompo} con información acerca de las secciones eficaces detalladas en el primer ítem.
@@ -620,25 +621,25 @@ Teniendo en cuenta los temas abordados previamente, la estimación de la derivad
 \end{equation}
 
 \noindent
-En este caso, una forma de estimar la derivada $\partial\Sigma_x / \partial P_g \left( Q, P^0_g, P^0_l \right)$ es a partir de numerosos cálculos con diferentes parámetros globales, quemados de referencia y \emph{linear loops}. Estos resultados permiten estimar tanto la derivada parcial en función del quemado con dirección al parámetro global como aquella con dirección al parámetro local. Las figuras~\ref{fig:global-local-pth-1}--\ref{fig:global-local-pth-3} resumen gráficamente estos conceptos descriptos. La figura~\ref{fig:global-local-pth-1} presenta una sección eficaz a quemado nulo. En este caso se evidencia que, debido a que no hay evolución en quemado, el valor de la sección eficaz no depende del parámetro global (es decir, no hubo evolución de los materiales) y solo depende de la condición local. La figura~\ref{fig:global-local-pth-2} demuestra que la dependencia con el parámetro global cobra importancia a mayores quemados debido a que la determinación de los materiales difiere según el parámetro global utilizado para evolucionar.
+En este caso, una forma de estimar la derivada $\partial\Sigma_x / \partial P_g \left( Q, P^0_g, P^0_l \right)$ es a partir de numerosos cálculos con diferentes parámetros globales, quemados de referencia y \emph{linear loops}. Estos resultados permiten estimar tanto la derivada parcial en función del quemado con dirección al parámetro global como aquella con dirección al parámetro local. Las figuras~\ref{fig:global-local-pth-1}--\ref{fig:global-local-pth-3} resumen gráficamente estos conceptos descriptos. La figura~\ref{fig:global-local-pth-1} presenta una sección eficaz a quemado nulo. En este caso se evidencia que, debido a que no hay evolución en quemado, el valor de la sección eficaz no depende del parámetro global (es decir, no hubo evolución de los materiales) y solo depende de la condición local. La figura~\ref{fig:global-local-pth-2} demuestra que la dependencia con el parámetro global cobra importancia a mayores quemados debido a que la determinación de los materiales difiere según el parámetro global utilizado para evolucionar. Por último, la figura~\ref{fig:global-local-pth-3} tabula, a modo de resumen, las dependencias de la derivada en sentido del parámetro local y de la derivada direccional $\left( \partial\Sigma_x / \partial P_l + \partial\Sigma_x / \partial P_g \right)$ como funciones del quemado, pudiéndose ver fácilmente que a bajos quemados la derivada en el sentido del parámetro global es despreciable. De todas formas, a medida que el quemado incrementa, no es correcto desestimar la derivada en dirección del parámetro global. Este tema volverá a ser abordado más adelante en esta misma sección.
 
 \begin{figure}[!h]
  \begin{center}
-  \includegraphics[width=0.78\linewidth]{graficos/dependencias-xs/XS1.pdf}
+  \includegraphics[width=1\linewidth]{graficos/dependencias-xs/XS1.pdf}
  \end{center}
 \caption{\label{fig:global-local-pth-1} Esta figura presenta como es que la sección eficaz no varía en la dirección del parámetro global cuando se encuentra a $Q = \SI{0}{\mega\watt\day\per\tonne U}$.}
 \end{figure}
 
 \begin{figure}[!h]
  \begin{center}
-  \includegraphics[width=0.78\linewidth]{graficos/dependencias-xs/XS2.pdf}
+  \includegraphics[width=1\linewidth]{graficos/dependencias-xs/XS2.pdf}
  \end{center}
 \caption{\label{fig:global-local-pth-2} En este caso, a quemado $Q = \SI{4000}{\mega\watt\day\per\tonne U}$, la sección eficaz depende tanto del parámetro global como del local.}
 \end{figure}
 
 \begin{figure}[!h]
  \begin{center}
-  \includegraphics[width=0.75\linewidth]{graficos/dependencias-xs/dxs.pdf}
+  \includegraphics[width=0.9\linewidth]{graficos/dependencias-xs/dxs.pdf}
  \end{center}
 \caption{\label{fig:global-local-pth-3} Derivada en la dirección del parámetro local y en la dirección de $P_g = P_l$ (direccional) de la sección eficaz en función del quemado. El hecho de que a bajos quemados ambas derivadas sean iguales refleja que la derivada en la dirección del parámetro global es despreciable. Posteriormente, esto deja de ser cierto, lo que indica que la derivada en el sentido del parámetro global no puede desestimarse.}
 \end{figure}
@@ -647,7 +648,7 @@ Como ya se ha mencionado, en el caso que exista un parámetro con el que las sec
 
 En el caso general, la tabla de secciones eficaces posee una dependencia con el quemado y los vectores $\vec{P_g}$ y $\vec{P_l}$. Traducir esto a un código de celda implica que, por cada combinación de parámetros globales, debe ejecutarse una corrida donde se realice un \emph{nested loop} sobre los parámetros locales y sus rangos de variación. Con el fin de disminuir la cantidad de cálculos de un \emph{nested loop} de gran dimensión, se aplica la aproximación desarrollada en la ecuación~\ref{ec:aprox-general-2} en aquellos parámetros que pueden ser considerados de forma aislada y cuya dependencia puede incorporarse con derivadas estimadas a partir de \emph{linear loops}. Sin embargo, aquellos parámetros con los que las secciones eficaces no presentan una dependencia lineal ni son separables deben incorporarse dentro del vector de interpolación, por lo que su dependencia es tabulada dentro del valor central. Por otro lado, con el fin de disminuir tanto la dimensión del vector de interpolación de la tabla como la cantidad de cálculos a realizar, la dependencia con los parámetros globales puede ser linealizada según la ecuación~\ref{ec:aprox-general-3}.
 
-Es conveniente analizar dos situaciones de interés: la evaluación de las secciones eficaces durante la determinación de un estado estacionario de planta y durante un transitorio. En el caso estacionario se itera hasta encontrar la distribución de parámetros globales y locales, teniendo en cuenta que ambas son iguales, es decir, $\vec{P_g} = \vec{P_l} = \vec{P}$. Si además se suponen perturbaciones separables y linealizables, la ecuación~\ref{ec:aprox-general-1} resulta en
+Es conveniente analizar dos situaciones de interés: la evaluación de las secciones eficaces durante la determinación de un estado estacionario de planta y durante un transitorio. En el caso estacionario se itera hasta encontrar las distribuciones de parámetros globales y locales, teniendo en cuenta que ambas son iguales, es decir, $\vec{P_g} (\vec{x}) = \vec{P_l} (\vec{x}) = \vec{P} (\vec{x})$. Si además se suponen perturbaciones separables y linealizables, la ecuación~\ref{ec:aprox-general-1} resulta en
 
 \begin{equation} \label{ec:aprox-general-4}
 % \begin{split}
@@ -658,7 +659,9 @@ Es conveniente analizar dos situaciones de interés: la evaluación de las secci
 \end{equation}
 
 \noindent
-donde la suma de ambas derivadas parciales da como resultado la derivada direccional en el sentido de $P_{g,k} = P_{l,k}$. Durante un transitorio, la sección eficaz se evalúa a partir del valor obtenido en el estacionario más las perturbaciones locales que correspondan (suponiendo que éstas son separables y linealizables), es decir:
+donde la suma de ambas derivadas parciales da como resultado la derivada direccional en el sentido de $P_{g,k} = P_{l,k}$. 
+
+Durante un transitorio, la sección eficaz se evalúa a partir del valor obtenido en el estacionario más las perturbaciones locales que correspondan (suponiendo que éstas son separables y linealizables), es decir:
 
 \begin{equation} \label{ec:aprox-general-5}
 % \begin{split}
@@ -680,19 +683,19 @@ Analizando las ecuaciones~\ref{ec:aprox-general-4} y~\ref{ec:aprox-general-5}, s
 \end{equation}
 
 \noindent
-Sin embargo, esta última aproximación no ocurre para casi ninguno de los parámetros. Aún así, en la sección~\ref{sec:modelo-clasico} se desarrolla una posible implementación de este esquema.
+Sin embargo, esta última aproximación no ocurre para casi ninguno de los parámetros.
 
 
 \section{Modelo detallado}
 \label{sec:modelo-detallado}
 
-En esta sección se describen, en primera instancia, las consideraciones físicas y matemáticas del esquema detallado de secciones eficaces. Por otro lado, se detalla la forma de obtener la tabla de múltiples parámetros a utilizar en el Programa Cinético Espacial haciendo uso de diferentes programas y \emph{scripts}. A su vez, con el fin de posibilitar futuras modificaciones en los esquemas de generación de tablas de múltiples parámetros se incluye el desarrollo del pseudocódigo de cada uno de los \emph{scripts}.
+En esta sección se describen, en primera instancia, las consideraciones físicas y matemáticas del esquema detallado de secciones eficaces de CNA2. Por otro lado, y sólo a título informativo, se detalla la forma de obtener la tabla de múltiples parámetros a utilizar en PCE haciendo uso de diferentes programas y \emph{scripts}. A su vez, con el fin de implementar los esquemas de generación de tablas de múltiples parámetros se incluye el desarrollo del pseudocódigo de cada uno de los \emph{scripts}.
 
 % {\color{blue}poner graficos de resultados de XS frente a los de wims de antes!}
 
 \subsection{Descripción}
 
-La aplicación de la ecuación~\ref{ec:aprox-general-1} a un modelo de reactor requiere seleccionar adecuadamente los parámetros y sus rangos de variación. Por este motivo, es de suma importancia estudiar la dependencia de las secciones eficaces con cada uno de los parámetros de entrada. El caso con mayor grado de detalle consiste en una tabla de secciones eficaces con los siguientes parámetros de entrada: quemado, temperaturas y densidades globales y locales del refrigerante y moderador, perfil de temperatura global y local del combustible y concentración de xenón global y local. La cantidad de combinaciones posibles entre estos parámetros equivale al producto de la discretización de cada uno de ellos. Obtener esta información no sólo requiere de una gran cantidad de cálculos de celda, si no que también de una costosa implementación computacional en un código de núcleo. Con el fin de calcular una tabla de secciones eficaces con este grado de detalle, se seleccionaron los parámetros de entrada presentes en la tabla~\ref{table:modelo-detallado} y detallados a continuación.
+La aplicación de la ecuación~\ref{ec:aprox-general-1} a un modelo de reactor requiere seleccionar adecuadamente los parámetros y sus rangos de variación. Por este motivo, es de suma importancia estudiar la dependencia de las secciones eficaces con cada uno de los parámetros de entrada. El caso con mayor grado de detalle consiste en una tabla de secciones eficaces con los siguientes parámetros de entrada: quemado, temperaturas y densidades globales y locales del refrigerante y moderador, perfil de temperatura global y local del combustible y concentración de xenón global y local. La cantidad de combinaciones posibles entre estos parámetros equivale al producto de la discretización de cada uno de ellos. Obtener esta información no sólo requiere de una gran cantidad de cálculos de celda, si no que también de una costosa implementación computacional en un código de núcleo. Con el fin de calcular una tabla de secciones eficaces con este grado de detalle, pero evitando la costosa implementación, se seleccionaron los parámetros de entrada presentes en la tabla~\ref{table:modelo-detallado} y detallados a continuación.
 
 {
 \begin{table}[h!]
@@ -712,6 +715,7 @@ $\vdots$ & $\vdots$     & $\vdots$     & $\vdots$     & $\vdots$     & $\vdots$ 
 }
 
 \begin{itemize}
+\renewcommand\labelitemi{$\cdot$}
  \item PL: parámetros locales;
  \item PG: parámetros globales;
  \item $Q$: quemado;
@@ -720,14 +724,14 @@ $\vdots$ & $\vdots$     & $\vdots$     & $\vdots$     & $\vdots$     & $\vdots$ 
   \theta_i = \frac{T_i - \SI{273.15}{\kelvin}}{T^{\text{est}}_i - \SI{273.15}{\kelvin}};
  \end{equation*}
  \item $q\prime$: potencia lineal global;
- \item $z$: representa la posición axial en el núcleo con el fin de determinar temperaturas y densidades globales y estacionarias del refrigerante y moderador{\footnote{El parámetro $z$ toma como valor un entero entre \num{1} y \num{10} que permite determinar las propiedades medias correspondientes a los trozos $\text{tr}_1 = \left( 2z-1 \right)$ y $\text{tr}_2 = 2z$ del reticulado de representación del reactor.}}. Por este motivo, previamente deben conocerse las distribuciones estacionarias de temperaturas y densidades, lo que implica que el proceso para generar esta tabla es iterativo entre la determinación de un estado estacionario de núcleo y los cálculos de celda;
+ \item $z$: representa la posición axial en el núcleo con el fin de determinar temperaturas y densidades globales y estacionarias del refrigerante y moderador{\footnote{El parámetro $z$ toma como valor un entero entre \num{1} y \num{10} que permite determinar las propiedades medias correspondientes a los trozos $\text{tr}_1 = \left( 2z-1 \right)$ y $\text{tr}_2 = 2z$ del reticulado de representación del reactor modelado en PCE.}}. Por este motivo, previamente deben conocerse las distribuciones estacionarias de temperaturas y densidades, lo que implica que el proceso para generar esta tabla es iterativo entre la determinación de un estado estacionario de núcleo y los cálculos de celda;
  \item $\Sigma_x$: valor central de tabla;
  \item $C_{\text{Xe}}$ y $C_{\text{I}}$: constantes para determinar la dinámica del xenón y iodo; y
  \item $\left( \partial\Sigma_x / \partial P \right)_{l,k}$: derivadas locales de las secciones eficaces respecto al parámetro $P_k$: xenón, temperatura o densidad del refrigerante y moderador.
 \end{itemize}
 
 
-En primer lugar se analizan los parámetros globales dejando a un lado los locales. Los parámetros globales son la potencia lineal $q\prime$ y una magnitud $z$ que representa la posición axial en el núcleo. Esta posición axial permite determinar el valor de las temperaturas y densidades globales del refrigerante y moderador si se conoce la distribución axial estacionaria de los mismos. A su vez, la temperatura del refrigerante junto a la potencia lineal y un modelo de combustible son utilizados para estimar el perfil de temperatura dentro de la pastilla (ver Ref.~\cite{modelos-pastilla-relap}). De esta forma, la elección de estos dos parámetros globales permite estimar a todos los parámetros globales reduciendo considerablemente los tiempos de cálculo debido a que cada combinación posible de parámetros globales $\vec{P_g}$ requiere de una ejecución del código de celda con el correspondiente quemado de referencia y, según corresponda, un \emph{nested} o \emph{linear loop} para las perturbaciones locales.
+En primer lugar se analizan los parámetros globales dejando a un lado los locales. Los parámetros globales son la potencia lineal $q\prime$ y una magnitud $z$ que representa la posición axial en el núcleo. Esta posición axial permite determinar el valor de las temperaturas y densidades globales del refrigerante y moderador si se conoce la distribución axial estacionaria de los mismos. A su vez, la temperatura del refrigerante junto a la potencia lineal y un modelo de combustible son utilizados para estimar el perfil de temperatura dentro de la pastilla (Ref.~\cite{modelos-pastilla-relap}). De esta forma, la elección de estos dos parámetros globales permite estimar a todos los parámetros globales reduciendo considerablemente los tiempos de cálculo debido a que cada combinación posible de parámetros globales $\vec{P_g}$ requiere de una ejecución del código de celda con el correspondiente quemado de referencia y, según corresponda, un \emph{nested} o \emph{linear loop} para las perturbaciones locales.
 
 La determinación del estado estacionario se lleva a cabo únicamente a partir de los valores centrales de tabla (a excepción del xenón, que es incorporado de forma aislada) sin perturbar. Esto significa que es necesario utilizar únicamente el valor de $\Sigma_x \left( Q, \vec{P_g}, \vec{P_g} \right) = \Sigma_x \left( Q, q\prime, z, \theta_i = \num{1} \right)$, obtenido a partir de una interpolación lineal de $n = \num{7}$ parámetros que toma en cuenta todas las posibles combinaciones entre ellos. El xenón estacionario es incorporado mediante la derivada en la dirección del parámetro local, debido a que la derivada en la dirección del parámetro global es despreciable (ver ecuación~\ref{ec:aprox-general-4}), tal como puede verse en la figura~\ref{fig:dependencias-xenon}. La siguiente ecuación resume la forma de computar las secciones eficaces estacionarias:
 
@@ -735,7 +739,7 @@ La determinación del estado estacionario se lleva a cabo únicamente a partir d
 % \begin{split}
  \Sigma^{\text{est}}_x \left( Q, \vec{P^{\text{est}}_g}, \vec{P^{\text{est}}_g} \right) \approx
  \Sigma_x \left( Q, q\prime_{\text{est}}, z_{\text{est}}, \theta^{\text{est}}_i = \num{1} \right) + 
- \frac{\partial\Sigma_x}{\partial \text{Xe}}\bigg|_{\left( Q, q\prime_{\text{est}}, z_{\text{est}} \right)} \cdot \left( \text{Xe}^{\text{est}} - \text{Xe}^0 \right).
+ \frac{\partial\Sigma_x}{\partial \text{Xe}_l}\bigg|_{\left( Q, q\prime_{\text{est}}, z_{\text{est}} \right)} \cdot \left( \text{Xe}^{\text{est}} - \text{Xe}^0 \right).
 % \end{split}
 \end{equation}
 
@@ -752,7 +756,7 @@ En un transitorio, los valores de $\theta_i$ no equivalen necesariamente a \num{
 % \begin{split}
  \Sigma^{\text{tr}}_x \left( Q, \vec{P^{\text{est}}_g}, \vec{P^{\text{tr}}_l} \right) \approx
  \Sigma_x \left( Q, q\prime_{\text{est}}, z_{\text{est}}, \theta^{\text{tr}}_1, \theta^{\text{tr}}_2, \theta^{\text{tr}}_3, \theta^{\text{tr}}_4 \right) + \\
- \frac{\partial\Sigma_x}{\partial \text{Xe}}\bigg|_{\left( Q, q\prime_{\text{est}}, z_{\text{est}} \right)} \cdot \left( \text{Xe}^{\text{tr}}_l - \text{Xe}^0 \right) +
+ \frac{\partial\Sigma_x}{\partial \text{Xe}_l}\bigg|_{\left( Q, q\prime_{\text{est}}, z_{\text{est}} \right)} \cdot \left( \text{Xe}^{\text{tr}}_l - \text{Xe}^0 \right) +
  \sum_{k = 1}^{N_{P}}{\frac{\partial\Sigma_x}{\partial P_{l,k}}\bigg|_{\left( Q, q\prime_{\text{est}}, z_{\text{est}} \right)} \cdot \left(P^{\text{tr}}_{l,k} - P^{\text{est}}_{l,k} \right)}.
 % \end{split}
 \end{multline}
@@ -883,210 +887,6 @@ $ ./multitable.sh
  \caption{\emph{Script} \texttt{multitable.sh} para obtener tabla de secciones eficaces.\label{algo:multitabla-detallada}}
 \end{algorithm}
 
-
-\section{Modelo simple}
-\label{sec:modelo-clasico}
-
-En esta sección se describen las características principales del modelo simple y el procedimiento elaborado para contruir una tabla de secciones eficaces que permite su implementaciòn en el Programa Cinético Espacial. Además, se discuten algunos resultados obtenidos referidos al cálculo de secciones eficaces y se esquematizan los programas utilizados para poder dar una idea clara de su funcionamiento.
-
-\subsection{Descripción}
-
-En este caso se considera que los combustibles se queman todos en las mismas condiciones termohidráulicas (condiciones promedios o nominales) y sin xenón, esta suposición se basa en que el efecto de la no uniformidad termohidráulica dentro del núcleo es compensado por exceso y defecto logrando un estado intemedio cercano a la realidad. Por otro lado, la presencia de xenon no altera las composiciones de los demàs materiales del núcleo en forma sustancial.
-
-Como normalmente ocurre, la dependencia de las secciones eficaces con los parámetros termohidráulicos es modelada en forma lineal ya que, como se ve en los cálculos, se obtienen curvas similares a la de la figura \ref{fig:global-local-pth-2} y por lo tanto la aproximación es realmente válida.
-
-Al igual que como ocurre en el modelo detallado, la realimentación por temperatura del combustible debe ser tratada con un cuidado adicional ya que se sabe, de la física de reactores, que el comportamiento neutrónico es muy sensible a la distribución de temperaturas dentro de la pastilla.  La idea aquí consiste en suponer que la dependencia de las secciones eficaces con la temperatura del combustible puede relacionarse únicamente a través de la potencia lineal; a diferencia del modelo detallado se podrían calcular secciones eficaces que dependan solo de una variable en vez de cuatro y costo computacional en el cálculo de secciones eficaces se reduciría notablemente a costas de realizar esta simplificación.
-
-Para llevar esto a la práctica se utiliza un modelo termohidráulico de pastilla combustible descripto en Ref.~\cite{modelos-pastilla-relap}, éste es implementado en el código RELAP y permite calcular el perfil de temperaturas estacionario $T_i$ (temperatura en cada uno de los anillos de la pastilla) dada una potencia lineal $q\prime$. Además, este modelo fue validado con código empleado para modelar la central y así obtener resultados aceptables. En la figura~\ref{fig:modelos-pastilla-relap} se esquematiza dicho procedimiento. 
-
-\begin{figure}[!h]
- \begin{center}
-  \includegraphics[width=0.78\linewidth]{imagenes/modelo-pastilla.pdf}
- \end{center}
-\caption{\label{fig:modelos-pastilla-relap} Representación del cálculo del perfil de temperaturas dentro de la pastilla dada una potencia lineal $q\prime$. En este caso $T_{refr}$ es la temperatura del refrigerante y $h$ es el coeficiente de transferencia térmico entre la vaina y el refrigerante, ambos son datos del problema y una entrada de datos al modelo.}
-\end{figure}
-
-Para evaluar la dependencias de las secciones eficaces con la potencia lineal $q\prime$ se eligió un conjunto de valores posibles de la misma en el rango de \num{10}~\si{\watt.\centi\meter^{-1}} a  \num{600}~\si{\watt.\centi\meter^{-1}} (valor que podría ser alcanzado en un evento anormal). Luego se calcularon los perfiles de temperatura en la pastilla correspondientes a dichas potencias y con los mismos se calcularon las secciones eficaces con el código DRAGON. Los resultados de estos cálculos se contemplan en las figuras~\ref{fig:xs-vs-q-0}~:~\ref{fig:xs-vs-q-11000} para el caso de $\rho_{\infty}$ y para distintos valores de quemado $Q$. Se puede apreciar que la dependencia de $\rho_{\infty}$ con $q\prime$ no es lineal (ocurre lo mismo con las secciones eficaces) como en en el caso de los parámetros termohidráulicos y el xenón.
-
-\begin{figure}[ht!]
-   \centering
-   %%----primera subfigura----
-   \subfloat[\label{fig:xs-vs-q-0}]{
-        \includegraphics[width=0.5\linewidth]{graficos/rho-vs-q-simple/xs-vs-q-0.pdf}}
-%    \hspace{0.005\linewidth}
-   %%----segunda subfigura----
-    \subfloat[\label{fig:xs-vs-q-4000}]{       
-        \includegraphics[width=0.5\linewidth]{graficos/rho-vs-q-simple/xs-vs-q-4000.pdf}}\\[10pt]
-   %%----tercera subfigura----
-    \subfloat[\label{fig:xs-vs-q-8000}]{       
-        \includegraphics[width=0.5\linewidth]{graficos/rho-vs-q-simple/xs-vs-q-8000.pdf}}
-   %%----tercera subfigura----
-    \subfloat[\label{fig:xs-vs-q-11000}]{       
-        \includegraphics[width=0.5\linewidth]{graficos/rho-vs-q-simple/xs-vs-q-11000.pdf}}
-   \caption{ Cálculos de celda con DRAGON. Dependencia de $\rho_{\infty}$ con la potencia lineal $q\prime$ en el rango de potencias \num{10}~\si{\watt.\centi\meter^{-1}} a  \num{600}~\si{\watt.\centi\meter^{-1}} para los quemados \num{0.0}~\si{\mega\watt\day / \tonne U}, \num{4000.0}~\si{\mega\watt\day / \tonne U}, \num{8000.0}~\si{\mega\watt\day / \tonne U} Y \num{11000.0}~\si{\mega\watt\day / \tonne U} en las figuras~\ref{fig:xs-vs-q-0}, \ref{fig:xs-vs-q-4000}, \ref{fig:xs-vs-q-8000} y \ref{fig:xs-vs-q-11000} respectivamente. Puede observarse un comportamiento no lineal de dicha cantidad en todos los casos, este es el motivo por el cual este parámetro es un argumento o entrada a la tabla de secciones eficaces. }
-   \label{fig:xs-vs-q}               
-\end{figure}
-
-\newpage
-Teniendo presente este último resultado en cuenta se plantea representar a las secciones eficaces con la forma de la ecuación~\ref{ec:aprox-general-2}, que en este caso es:
-
-\begin{align}
-\label{ec:xs-mod-simple}
-\begin{split}
- \Sigma_x \left( Q, \vec{P_g^{0}}, q\prime ,\vec{P_{th}} \right) \approx &
- \Sigma_x \left( Q, \vec{P_g^{0}}, q\prime ,\vec{P_{th}} \right) +  \sum_{k = 1}^{N_{P}}{\frac{\partial\Sigma_x}{\partial P_{{th},k}}\bigg|_{Q,\vec{P_g^{0}}} \cdot \left(P_{{th},k} - P^{0}_{{th},k} \right)},
-\end{split}
-\end{align}
-
-\noindent
-donde $Q$ es el quemado del combustible, $\vec{P_g^{0}}$ representa los valores de los parámetros nominales de quemado (únicos valores de parámetros globales) y al vector $\vec{P_l}$ se lo ha descompuesto en la potencia lineal $q\prime$ y el valor del parámetro termohidráulico $k$ $P_{{th},k}$ cuyo valor nominal es $P^{0}_{{th},k}$ (incluyendo al xenón). Para implementar esta dependencia en las secciones eficaces, de la misma manera que con el modelo detallado, se eligió el esquema presentado en la tabla~\ref{table:modelo-simple}, donde para cada combinación de $Q$ y $q\prime$ existe un valor central de tabla $\Sigma_x$ y $\partial\Sigma_x / \partial P_{l,k}$ depende únicamente de $Q$.
-
-\begin{table}[hhh!]
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-$Q$ & $q\prime$ & $\Sigma_x$ &  $C_{\text{Xe}}$ y $C_{\text{I}}$ & $\partial\Sigma_x / \partial P_{l,k}$ \\
-\hline
-$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-\hline
-\end{tabular}
-\caption{\label{table:modelo-simple} Esquema de la tabla de secciones eficaces para el modelo simple.}
-\end{center}
-\end{table}
-
-En el cálculo de las derivadas de los parámetros termohidráulicos se debe hacer una consideración especial respecto al cálculo de $\partial\Sigma_x / \partial T_r$ ($T_r$ es la temperatura del refrigerante) ya que el modelo supone que el perfil de temperaturas en la pastilla depende únicamente de la potencia lineal. Esto último no es cierto ya que el perfil depende de otras variables, entre ellas y muy fuertemente, de la temperatura del refrigerante $T_r$. Por este motivo, para el cálculo de esta derivada se efectúa una perturbación en la temperatura del refrigerante al unisono de una perturbación en el perfil de temperaturas en la pastilla correspondiente al cambio de $T_r$ dejando $q\prime$ fijo (el perfil se calcula con el modelo anteriormente detallado).
-
-En la figura~\ref{fig:xs-vs-trefr-simple} se puede ver la diferencia entre un cálculo de $\rho_{\infty}$ variando $T_{refr}$ y el perfil de temperaturas en el combustible $T_i$ correspondiente (caso acoplado) y un cálculo de $\rho_{\infty}$ variando únicamente $T_r$. Se aprecia que, en el rango de operación del reactor (\num{550}~\si{\kelvin} a \num{590}~\si{\kelvin}), las diferencias en reactividad llegan a \num{23}~\si{pcm} y por ello en necesario tener en cuenta este efecto.
-
-\begin{figure}[!h]
- \begin{center}
-  \includegraphics[width=0.78\linewidth]{graficos/rho-vs-tref-simple/xs-vs-trefr-simple.pdf}
- \end{center}
-\caption{\label{fig:xs-vs-trefr-simple} Càlculo de celda efectuado con DRAGON. Aquí se ve la dependencia de $\rho_{\infty}$ con la temperatura del refrigerante $T_{refr}$ al acoplarse con la temperatura del combustible $T_i$ y sin acoplar, las diferencias en reactividad dentro del rango de variación normal (\num{550}~\si{\kelvin} a \num{590}~\si{\kelvin}) es significativo (hasta \num{23}~\si{pcm}).}
-\end{figure}
-
-Finalmente, como los valores de los perfiles de temperaturas $T_i$ con los cuales se calculan las secciones eficaces se corresponden a estados estacionarios con potencia $q\prime$, es necesario corregir la potencia de la cuál dependen las secciones eficaces ($q\prime_{*} = f (q\prime)$) de forma tal de que el perfil estacionario a $q\prime_{*}$ tenga las mismas secciones eficaces que el perfil que realmente existente en ese instante de tiempo. En este caso se propone una corrección de la forma
-
-\begin{equation}
-q\prime^{n+1}_{*} = \alpha q\prime^{n}_{*}+ (1-\alpha) q\prime^{n+1},
-\end{equation}
-
-\noindent
-este comportamiento se esquematiza en la figura~\ref{fig:correc_pow} (figura correspondiente a Ref.~\cite{modelos-pastilla-relap}) y donde $q\prime^{n}_{*}$ y $q\prime^{n+1}_{*}$ son las potencias corregidas a tiempos $t_{n}$ y $t_{n+1}$ respectivamente, $q\prime^{n+1}$ es la potencia real a tiempo $t_{n+1}$ y $\alpha$ es una constante característica de la demora en la pastilla. Notar que si $q\prime$ es constante a partir de $t_{0}$ y $\alpha\in[0,1)$ entonces:
-
-\begin{equation}
-\lim_{t \rightarrow \infty} q\prime^{n+1}_{*} =  q\prime^{n+1}
-\end{equation}
-
-\noindent
-y el modelo tiene un comportamiento asintótico aceptable (esto se representa también la figura).
-
-\begin{figure}[htbl!]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{imagenes/correc_pow.pdf}
-\end{center}
-\caption[Evolución de la potencia corregida $q\prime_{*}$ cuyo perfil estacionario de temperaturas en el combustible es similar al perfil transitorio.]{\label{fig:correc_pow} Evolución de la potencia corregida $q\prime_{*}$ cuyo perfil estacionario de temperaturas en el combustible es similar al perfil transitorio.}
-\end{figure}
-
-El valor de $\alpha$ calculado es \num{0.9975} y depende de las propiedades térmicas del material de la pastilla, es decir, la capacidad calorífica $Cp$ y la conductividad térmica $k$. Se remarca además que en el futuro será posible a través de este modelo simular el deterioro en las pastillas causado por la radiación a través del planteo $\alpha=\alpha(Q)$ y más completo aún $\alpha=\alpha(Q,T)$ lo cuál repercute en el tiempo de respuesta de la pastilla y finalmente en el efecto Doppler. Esto es importante ya que una pastilla muy quemada posee menor conductividad térmica $k$ ó un $\alpha$ muy cercano a \num{1} eso la vuelve más lenta y hace que el efecto de realimentación por temperatura se demore dando evoluciones más bruscas en potencia y haciendo que el reactor sea más inestable.
-
-\subsection{Generación}
-
-En esta sección, al igual que como se describió para el modelo detallado, se describe el procedimiento utilizado para generar la tabla~\ref{table:modelo-simple} de secciones eficaces y necesaria para la implementación del modelo simple.
-
-El \emph{script} \texttt{run.sh} es el que se encarga de preparar los \emph{inputs} de DRAGON y realizar su ejecución. Con el fin de poner en evidencia su \emph{usage}, basta con ejecutarlo sin argumentos:
-
-\begin{lstlisting}[style=bash_tecna]
-$ ./run.sh 
-
-  usage: run.sh <library_name> [ all | xenon | xenond | trefr | drefr | tmod | dmod | central ] [ dragon ]
-* library_name es el nombre de la biblioteca a utilizar y ubicada dentro del directorio libraries/.
-* [ dragon        ] se ejecuta DRAGON
-* [ xenon         ] perturbaciones de xenon
-* [ xenond        ] constantes para dinámica de xenon
-* [ trefr         ] perturbaciones de temperatura de refrigerante
-* [ drefr         ] perturbaciones de densidad de refrigerante
-* [ tmod          ] perturbaciones de temperatura de moderador
-* [ dmod          ] perturbaciones de densidad de moderador
-* [ central       ] perturbaciones en potencia lineal
-* [ all           ] todas las perturbaciones + dinámica de xenon
-
-\end{lstlisting}
-
-Con el fin de realizar las ejecuciones necesarias, este \emph{script} prepara los \emph{inputs} y los ubica en el correspondiente directorio dentro de \texttt{outputs}. Esto se realiza, por ejemplo, haciendo: 
-
-\begin{lstlisting}[style=bash_tecna]
-$ ./run.sh IAEA-E6 all dragon
-\end{lstlisting}
-
-\noindent
-donde \texttt{IAEA-E6} es el nombre de la biblioteca de datos nucleares y \texttt{all} establece que se deben preparar todos los \emph{inputs}. En este último caso, si no se desean ejecutar todos los cálculos, es posible reemplazar a \texttt{all} por \texttt{central}, \texttt{trefr}, \texttt{drefr}, \texttt{tmod}, \texttt{dmod}, \texttt{xenon} o \texttt{xenond}. Por último, la palabra clave \texttt{dragon} indica que los \emph{inputs} deben ser ejecutados inmediatamente (el usuario podría desear no hacerlo para verificar su correcta preparación).
-
-Una vez obtenidos los resultados con DRAGON, éstos deben ser procesados para formar la tabla de secciones eficaces. La ejecución del \emph{script} \texttt{multitable.sh} ubicado dentro del directorio \texttt{multitable}
-
-\begin{lstlisting}[style=bash_tecna]
-$ ./multitable.sh IAEA-E6 
-\end{lstlisting}
-
-\noindent
-generará, a partir de los objetos \texttt{multicompo} almacenados en el directorio \texttt{outputs}, el archivo \texttt{dragon-multitabla-IAEA-E6.dat} que se corresponde a la tabla de secciones eficaces. Los algoritmos~\ref{algo:run-simple} y~\ref{algo:multitable-simple} detallan la lógica detrás de los \emph{scripts} desarrollados en esta sección.
-
-\medskip
-\begin{algorithm}[H]
- 
- \KwData{Argumentos del \emph{script}.}
- \KwResult{Directorios conteniendo las salidas de DRAGON.}
- 
- \If{no se proveyeron argumentos}{
-   imprimir el \emph{usage} y abortar.
- }
- verificar argumentos provistos\;
- leer \texttt{header.sh} y definir combinaciones a realizar\;
-  
- \For{cada potencia lineal}{
-   calcular perfiles de temperatura del combustible\;
-   condensar perfiles a volúmenes de DRAGON\;
- }
- reemplazar perturbaciones en el \emph{template} del \emph{input}\;
- ejecutar DRAGON\;
- \For{cada valor de trefr para derivada}{
-   calcular perfiles de temperatura del combustible\;
-   condensar perfiles a volúmenes de DRAGON\;
- }
- reemplazar perturbaciones en el \emph{template} del \emph{input} que corresponda\;
- ejecutar DRAGON\;
- \For{cada parámetro termohidráulico + xenón + propiedades xenón y iodo - trefr}{  
-    definir perturbaciones locales dependiendo cual sea el parámetro\;
-    reemplazar perturbaciones en el \emph{template} del \emph{input} que corresponda\;
-    ejecutar DRAGON\
- }  
-\caption{\emph{Script} \texttt{run.sh} para obtener las corridas de DRAGON.\label{algo:run-simple}}
-\end{algorithm}
-\medskip
-
-\medskip
-\begin{algorithm}[H]
- 
- \KwData{Objetos \texttt{multicompo}.}
- \KwResult{Tabla de secciones eficaces y sus derivadas.}
- 
- leer \texttt{header.sh} y definir combinaciones a realizar\;
- 
- verificar la existencia de todos los objetos \texttt{multicompo} necesarios\;
- 
- generar tabla parcial de valores centrales de tabla\;
- generar tabla parcial de constantes para la dinámica del iodo y xenón\;
- generar tabla parcial de derivadas respecto a la concentración de xenón\;
- generar tabla parcial de derivadas respecto a la temperatura de refrigerante\;
- generar tabla parcial de derivadas respecto a la densidad de refrigerante\;
- generar tabla parcial de derivadas respecto a la temperatura de moderador\;
- generar tabla parcial de derivadas respecto a la densidad de moderador\;
- unir tablas parciales y formar la tabla final \;
- limpiar datos y archivos generados\;
-
- \caption{\emph{Script} \texttt{multitable.sh} para obtener tabla de secciones eficaces.\label{algo:multitable-simple}}
-\end{algorithm}
-\medskip
 
 \label{lastpage}
 
