@@ -9,3 +9,4 @@ full-paper.pdf
 *.log
 *.aux
 *.backup
+*.toc

@@ -107,9 +107,6 @@
 \def\maketitle{%
 \thispagestyle{empty}
 
-\newlength{\coff}
-\setlength{\coff}{0.3cm}
-
 % --- title -------------------------------------------------------
 \null
 \vspace{0.5cm plus 0.5cm minus 0.5cm}
@@ -170,10 +167,51 @@ Con el fin de determinar las discrepancias encontradas entre el coeficiente de r
 XLIII Reunión Anual de la Asociación Argentina de Tecnología Nuclear\\
 Buenos Aires, Noviembre 2016
 \end{small}
+
+\pagebreak
+
+\title{Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON V5 para CNA2}
+\author{Vignolo, R.$^{1}$ \quad Giuntoli, G.$^{1}$ \quad Khatchikian, F.$^{2}$}
+\affiliation{%
+$^1$TECNA Estudios y Proyectos de Ingeniería S.A.\\
+Encarnaci\'on Ezcurra 365, C1107CLA~Buenos Aires, Argentina\\
+\url{rvignolo@tecna.com}\\
+~\\
+~\\
+$^2$Nucleoeléctrica Argentina S.A\\
+Francisco Narciso de Laprida 3100, B1603AAA~Vicente López, Argentina\\
+\url{fkhatchikian@na-sa.com.ar}\\
+}
+
+
+\maketitle
+
+\selectlanguage{english}
+\begin{abstract}
+\noindent
+traducir al ingles
+
+% en el prox trabajo, lo que voy a hablar es la implementacion de estos dentro del dypra (pce principalmente) y los resultados obtenidos en cuanto a los coefs.
+\end{abstract}
+
+\vfill
+
+\begin{center}
+\begin{small}
+XLIII Reunión Anual de la Asociación Argentina de Tecnología Nuclear\\
+Buenos Aires, Noviembre 2016
+\end{small}
+\end{center}
+
 \end{center}
 
 \addtolength{\textheight}{-2cm}
 
+\pagebreak
+
+\selectlanguage{spanish}
+
+\tableofcontents
 \pagebreak
 
 \section{Introducción}
@@ -448,8 +486,9 @@ El procedimiento \texttt{CalcFlux.c2m} permite resolver la ecuación de transpor
 
 \begin{figure}[!h]
  \begin{center}
-  \subfloat[\label{fig:flux-1}]{\includegraphics[width=0.35\linewidth]{imagenes/HexFlux_g1.pdf}} 
-  \subfloat[\label{fig:flux-69}]{ \includegraphics[width=0.35\linewidth]{imagenes/HexFlux_g69.pdf}}\\
+  \subfloat[\label{fig:flux-1}]{\includegraphics[width=0.4\linewidth]{imagenes/HexFlux_g1.pdf}}
+  \newline
+  \subfloat[\label{fig:flux-69}]{\includegraphics[width=0.4\linewidth]{imagenes/HexFlux_g69.pdf}}\\
   \caption{Distribución espacial del flujo pertenecientes al grupo más rápido (\textbf{a}) y más térmico (\textbf{b}) sin quemar.}
   \label{fig:fluxes}
  \end{center}
