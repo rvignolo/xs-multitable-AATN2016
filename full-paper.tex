@@ -165,10 +165,11 @@ Con el fin de determinar las discrepancias encontradas entre el coeficiente de r
 XLIII Reunión Anual de la Asociación Argentina de Tecnología Nuclear\\
 Buenos Aires, Noviembre 2016
 \end{small}
+\end{center}
 
 \pagebreak
 
-\title{Desarrollo de tablas de secciones eficaces dependientes de múltiples parámetros en DRAGON V5 para CNA2}
+\title{Development of multiple parameters cross sections tables in DRAGON V5 for CNA2}
 \author{Vignolo, R.$^{1}$ \quad Giuntoli, G.$^{1}$ \quad Khatchikian, F.$^{2}$}
 \affiliation{%
 $^1$TECNA Estudios y Proyectos de Ingeniería S.A.\\
@@ -187,9 +188,8 @@ Francisco Narciso de Laprida 3100, B1603AAA~Vicente López, Argentina\\
 \selectlanguage{english}
 \begin{abstract}
 \noindent
-In order to determine the discrepancies found between the fuel temperature coefficient (\emph{doppler}) measured at the Atucha~II Nuclear Power Plant and the one calculated from WIMS cross sections in the usual way, the need to model the fuel assembly of CNA2 in DRAGON arose. This lattice cell code not only allows to consider certain phenomena previously neglected, but it also has a number of functions or procedures, \emph{macros} language and external programs that facilitate the obtaining of multiple parameter tables. Multiple parameter table concept arises because a single parameter table is not adequate for the representation of these new phenomena. In this context, new non-linear dependeces are needed. This paper presents the theory behind global and local cross sections parameters. Then, this theory is applied in order to identify
-
-En este trabajo se presenta la teoría detrás de los parámetros globales y locales de secciones eficaces que ha permitido identificar cuáles de ellos deben ser seleccionados para representar adecuadamente la central nuclear, tanto en cálculos de núcleo estacionarios como en transitorios de cinética espacial. En este contexto, se describe la implementación de estos conceptos dentro de un \emph{deck} de cálculo que utiliza DRAGON como motor de cálculo neutrónico y, posteriormente, se analizan los resultados obtenidos.
+In order to determine the discrepancies found between the fuel temperature coefficient (\emph{doppler}) measured at the Atucha~II Nuclear Power Plant (CNA2) and the one calculated from WIMS cross sections in the usual way, the need to model the fuel assembly of CNA2 in DRAGON arose. This lattice code not only allows to consider certain phenomena previously neglected, but it also has a number of functions or procedures, \emph{macros} language and external programs that facilitate the obtaining of multiple parameters tables. Multiple parameters table concept arises because a single parameter table is not adequate for the representation of these new phenomena, since new non-linear dependeces are needed. This paper addresses the theory behind global and local cross sections parameters that 
+has been used to identified which parameters should be taken into account for steady-state and transient (spatial kinetics) calculations. In this context, the implementation of these concepts into a calculation deck that uses DRAGON as cell code is presented and, later, results are analyzed.
 \end{abstract}
 
 \vfill
@@ -197,10 +197,8 @@ En este trabajo se presenta la teoría detrás de los parámetros globales y loc
 \begin{center}
 \begin{small}
 XLIII Reunión Anual de la Asociación Argentina de Tecnología Nuclear\\
-Buenos Aires, Noviembre 2016
+Buenos Aires, November 2016
 \end{small}
-\end{center}
-
 \end{center}
 
 \addtolength{\textheight}{-2cm}
@@ -214,7 +212,7 @@ Buenos Aires, Noviembre 2016
 
 \section{Introducción}
 
-Con el fin de determinar las discrepancias encontradas entre el coeficiente de reactividad por temperatura del combustible (\emph{doppler}) medido en planta y el calculado a partir de secciones eficaces obtenidas mediante el código de celda WIMS de forma usual, surgió la necesidad de modelar la celda elemental de la Central Nuclear Atucha~II a través de una herramienta que permita tener en cuenta ciertos fenómenos previamente considerados despreciables. Se optó por el código de celda DRAGON en su versión 5 (ver Ref.~\cite{handbook-dragon}).
+Con el fin de determinar las discrepancias encontradas entre el coeficiente de reactividad por temperatura del combustible (\emph{doppler}) medido en planta y el calculado a partir de secciones eficaces obtenidas mediante el código de celda WIMS de forma usual, surgió la necesidad de modelar la celda elemental de la Central Nuclear Atucha~II a través de una herramienta que permita tener en cuenta ciertos fenómenos previamente considerados despreciables. Se optó por el código de celda DRAGON en su versión 5 (Ref.~\cite{handbook-dragon}).
 
 A lo largo de este trabajo se pondrán en evidencia las diferencias con la forma clásica de computar las secciones eficaces y sus dependencias. Entre ellas se destacan el hecho de poder diferenciar perturbaciones globales de perturbaciones locales o tener en cuenta el tratamiento resonante de subgrupos en la pastilla combustible que permite apantallar las secciones eficaces microscópicas según un perfil de temperatura no uniforme. Para poder implementar adecuadamente estos fenómenos al esquema de secciones eficaces, debe pasarse de la tabla usual de un único parámetro de entrada (el quemado) a una de múltiples parámetros (dado que existen nuevas dependencias no lineales).
 
